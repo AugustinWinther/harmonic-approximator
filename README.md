@@ -14,7 +14,7 @@
   * [Finding eigenenergies](#finding-eigenenergies)
 
 ## Main program
-The program `harmonic_approximator.py` that approximates the $K \geq 1$ first energies of the Harmonic Oscillator:
+The program `harmonic_approximator.py` approximates the $K \geq 1$ first energies of the Harmonic Oscillator:
 
 ```math
     V(x) = \frac{1}{2} M \omega^2 x^2
@@ -505,6 +505,7 @@ So, we are looking at $N$ eigenvalues of $E$. If, for example, we had $N=2$, our
 and the approximated first energy would be $E_1$, and the approximated second energy would be $E_2$.
 
 Thankfully, effective and performant functions for finding the eigenvalues of matrix eigenvalue equations are implemented in a lot of programming libraries, so we need not worry more about it here. In this code, the function `eigenvalsh()` form the Python module NumPy is used.
+
 
 
 
