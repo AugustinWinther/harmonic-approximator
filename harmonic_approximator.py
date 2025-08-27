@@ -8,7 +8,6 @@ N >= K first eigenfunctions of the Infinite Square Well (I.S.W.) of length L.
 import argparse
 
 # Local
-import perf
 import calc
 
 def calculate_and_print_energies(K: int, N: int, L: float, PREC: int) -> None:
@@ -18,9 +17,8 @@ def calculate_and_print_energies(K: int, N: int, L: float, PREC: int) -> None:
     # Calculate analytical energies
     actual_energies = calc.analytical_energies(K)
 
-    # Calculate and time numerical energy approximations
-    T, approx_energies = perf.timeit(calc.numerical_energies, 
-                                     K=K, N=N, L=L, PREC=PREC)
+    # Calculate numerical energies
+    approx_energies = calc.numerical_energies(K, N, L, PREC)
 
     # Find error percentages of the approximated energies
     errors = (approx_energies/actual_energies - 1)*100
@@ -34,8 +32,6 @@ def calculate_and_print_energies(K: int, N: int, L: float, PREC: int) -> None:
     for i in range(K):
         print(f"| n = {i + 1:>2} | {actual_energies[i]:>13} "
               f"| {approx_energies[i]:>18.8f} | {errors[i]:>10.5f} |")
-    print()
-    print(f"          exec. time: {T:.3f} ms | numerical prec.: {PREC}")
     print()
 
 if __name__ == "__main__":
