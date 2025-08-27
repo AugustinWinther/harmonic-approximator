@@ -255,7 +255,7 @@ Thus we can write
 Unfortunately, the elements of the matrix $\mathbf{V}$ are extremely hard to do analytically due to the insane integral
 
 ```math
-    V_{mn} = \frac{M\omega^2}{L}\int_0^L\sin\left(\frac{\pi}{L}mx\right)\sin\left(\frac{\pi}{L}nx\right) (x - L/2)^2 dx
+    V_{mn} = \frac{1}{L}\int_0^L\sin\left(\frac{\pi}{L}mx\right)\sin\left(\frac{\pi}{L}nx\right) (x - L/2)^2 dx
 ```
 
 #### Potential energy integral as sum
@@ -273,7 +273,7 @@ In other words, $\mathbf{x}$ contains all the midpoints of each sub-interval. No
 We can now approximate the integral as the sum
 
 ```math
-    V_{mn} \approx \frac{M\omega^2}{L} \sum_i\left[\sin\left(\frac{\pi}{L}mx_i\right)\sin\left(\frac{\pi}{L}nx_i\right) (x_i - L/2)^2\right]\Delta x
+    V_{mn} \approx \frac{1}{L} \sum_i\left[\sin\left(\frac{\pi}{L}mx_i\right)\sin\left(\frac{\pi}{L}nx_i\right) (x_i - L/2)^2\right]\Delta x
 ```
 
 Okay, that should be easy to implement in code with a nested for-loop, however, that would not utilize our computation power to its fullest. In the world of computation, matrices and vectors are the kings and queens when it comes to performance. So let's give the computer the food it loves!
@@ -336,7 +336,7 @@ Or, written more simply:
 Okay, let's finally find a expression for the potential energy matrix. We have that the elements of $\mathbf{V}$ are approximated to
 
 ```math
-    V_{mn} \approx \frac{M\omega^2}{L} \sum_i\left[\sin\left(\frac{\pi}{L}mx_i\right)\sin\left(\frac{\pi}{L}nx_i\right) (x_i - L/2)^2\right]\Delta x
+    V_{mn} \approx \frac{1}{L} \sum_i\left[\sin\left(\frac{\pi}{L}mx_i\right)\sin\left(\frac{\pi}{L}nx_i\right) (x_i - L/2)^2\right]\Delta x
 ```
 
 _Note that this means our approximation of $\mathbf{V}$ is **symmetric**. Since changing $m$ and $n$ does not change the value, thus $V_{mn} = V_{nm}$._
@@ -344,14 +344,14 @@ _Note that this means our approximation of $\mathbf{V}$ is **symmetric**. Since 
 The sum in the middle is equal to the $mn$-th element of $\mathbf{P} = \mathbf{S}^\mathrm{T}\,\mathbf{S}$ as we just showed, so we can write
 
 ```math
-    V_{mn} \approx \frac{M\omega^2}{L} P_{mn}\Delta x
+    V_{mn} \approx \frac{1}{L} P_{mn}\Delta x
 ```
 
 Which is the same as writing
 
 ```math
-    \mathbf{V} \approx \frac{M\omega^2}{L} \cdot \mathbf{P} \cdot \Delta x  \\
-    \mathbf{V} \approx \frac{M\omega^2}{L} \cdot \mathbf{S}^\mathrm{T}\,\mathbf{S} \cdot \Delta x  \\
+    \mathbf{V} \approx \frac{1}{L} \cdot \mathbf{P} \cdot \Delta x  \\
+    \mathbf{V} \approx \frac{1}{L} \cdot \mathbf{S}^\mathrm{T}\,\mathbf{S} \cdot \Delta x  \\
 ```
 
 Great! But, we still need to know how to construct the matrix $\mathbf{S}$. We have that 
@@ -465,7 +465,7 @@ where $\mathbf{t}$ is vector whose $n$-th component is
 And
 
 ```math
-    \mathbf{V} \approx \frac{M\omega^2}{L} \cdot \mathbf{S}^\mathrm{T}\,\mathbf{S} \cdot \Delta x  \\
+    \mathbf{V} \approx \frac{1}{L} \cdot \mathbf{S}^\mathrm{T}\,\mathbf{S} \cdot \Delta x  \\
 ```
 
 where $\mathbf{S}$ is a matrix whose $in$-th component is
@@ -505,6 +505,7 @@ So, we are looking at $N$ eigenvalues of $E$. If, for example, we had $N=2$, our
 and the approximated first energy would be $E_1$, and the approximated second energy would be $E_2$.
 
 Thankfully, effective and performant functions for finding the eigenvalues of matrix eigenvalue equations are implemented in a lot of programming libraries, so we need not worry more about it here. In this code, the function `eigenvalsh()` form the Python module NumPy is used.
+
 
 
 
