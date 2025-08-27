@@ -70,7 +70,7 @@ Output:
 
 ## Mathematics behind code
 
-NOTE: GitHub does not have the best rendered for LaTeX. I reccomend viewing this in VSCode's markdown previewer.
+NOTE: GitHub does not have the best renderer for LaTeX. I reccomend viewing this in VSCode's markdown previewer.
 
 We assume we can express the wavefunction of the Harmonic Oscillator $\psi$ in a 
 basis spanned by the solutions $\phi_n$ to the TISE of the Infinite Square Well:
@@ -505,6 +505,7 @@ So, we are looking at $N$ eigenvalues of $E$. If, for example, we had $N=2$, our
 and the approximated first energy would be $E_1$, and the approximated second energy would be $E_2$.
 
 Thankfully, effective and performant functions for finding the eigenvalues of matrix eigenvalue equations are implemented in a lot of programming libraries, so we need not worry more about it here. In this code, the function `eigenvalsh()` form the Python module NumPy is used.
+
 
 
 
