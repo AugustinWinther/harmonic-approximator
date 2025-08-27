@@ -61,7 +61,7 @@ The additional program `N_vs_L.py` plots a graph showing good combinations of $N
 Example of how to run the program with $K=10$, where we check all combinations of $N \in [K, 50]$ and $L \in [1, 35]$ (with `dL = 0.1` between all $L$ values) that gives all first $K$ energies with less than `E = 1.0` % error. Higher values of $L$ generally requires higher integration precision, so we have here set `P=200`.
 
 ```bash
-python.exe N_vs_L.py -K 10 -N 50 -L 35 -P 200 -dL 0.1 -E 1.0
+python N_vs_L.py -K 10 -N 50 -L 35 -P 200 -dL 0.1 -E 1.0
 ```
 
 Output:
@@ -505,6 +505,7 @@ So, we are looking at $N$ eigenvalues of $E$. If, for example, we had $N=2$, our
 and the approximated first energy would be $E_1$, and the approximated second energy would be $E_2$.
 
 Thankfully, effective and performant functions for finding the eigenvalues of matrix eigenvalue equations are implemented in a lot of programming libraries, so we need not worry more about it here. In this code, the function `eigenvalsh()` form the Python module NumPy is used.
+
 
 
 
