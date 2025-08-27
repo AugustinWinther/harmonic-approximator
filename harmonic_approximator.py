@@ -11,8 +11,8 @@ import argparse
 import calc
 
 def calculate_and_print_energies(K: int, N: int, L: float, PREC: int) -> None:
-    """
-    Calculates and prints first K energies
+    """Calculates and prints first K energies
+    
     """
     # Calculate analytical energies
     actual_energies = calc.analytical_energies(K)
@@ -67,5 +67,6 @@ if __name__ == "__main__":
                         required=True)
 
     args = parser.parse_args()
+
 
     calculate_and_print_energies(args.K, args.N, args.L, args.PREC)
